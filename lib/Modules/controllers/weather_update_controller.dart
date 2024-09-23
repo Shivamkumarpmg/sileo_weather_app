@@ -16,19 +16,19 @@ class WeatherUpdateController extends GetxController {
 
   var data = WeatherApiResponseModel().obs;
 
+
+  onInit() {
+    super.onInit();
+    getCurrentLocation();
+    getCurrentWeather();
+  }
+
+
   getCurrentWeather() async{
    var key = "key=7ededc1e89e54ccfb9484611240507";
    var q = "q=${lat.value},${long.value}";
-   print("My Current Lat long: $lat, $long");
     var response = await apiService.getApi('${ApiConstants.forecast}?$key&$q');
-    print("Response --> ${jsonDecode(response)}");
     data.value = WeatherApiResponseModel.fromJson(jsonDecode(response) );
-    print("Check Data Value: ${data.value.current.toString()}");
-
-  }
-
-  onInit() {
-    getCurrentLocation();
   }
 
   Future<bool> handleLocationPermission( ) async {
