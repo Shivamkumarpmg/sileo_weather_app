@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:weatherapp/Modules/presentation/current_location.dart';
+import 'package:weatherapp/Modules/presentation/weather_update_screen.dart';
 
 void main() {
   runApp(const MyApp());
